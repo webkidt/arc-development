@@ -1,12 +1,14 @@
+import { ThemeProvider } from '@mui/material/styles';
 import Header from './ui/Header';
+import theme from './ui/Theme';
 
 // cSpell: disable
 function App() {
   return (
-    <div className='App'>
+    <ThemeProvider theme={theme}>
       <Header />
       Hello!
-    </div>
+    </ThemeProvider>
   );
 }
 
