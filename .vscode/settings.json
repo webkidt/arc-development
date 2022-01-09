@@ -1,3 +1,12 @@
 {
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "files.associations": {
+    "**/components/**/*.js": "javascriptreact",
+    "**/containers/**/*.js": "javascriptreact",
+    "**/hoc/**/*.js": "javascriptreact"
+  },
   "cSpell.words": ["arcdevelopment"]
 }
