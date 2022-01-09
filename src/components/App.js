@@ -1,5 +1,6 @@
-import Header from "./ui/Header";
+import Header from './ui/Header';
 
+// cSpell: disable
 function App() {
   return (
     <div className='App'>
