@@ -1,7 +1,9 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { styled } from '@mui/system';
 
 const ElevationOnScroll = props => {
   const { children } = props;
@@ -10,13 +12,22 @@ const ElevationOnScroll = props => {
   return React.cloneElement(children, { elevation: trigger ? 4 : 0 });
 };
 
+const ToolbarMargin = styled('div')(({ theme }) => ({
+  ...theme.mixins.toolbar,
+}));
+
 const Header = props => {
   return (
-    <ElevationOnScroll {...props}>
-      <AppBar position='fixed'>
-        <Toolbar>Arc Development</Toolbar>
-      </AppBar>
-    </ElevationOnScroll>
+    <React.Fragment>
+      <ElevationOnScroll {...props}>
+        <AppBar position='fixed'>
+          <Toolbar>
+            <Typography variant='h3'>Arc Development</Typography>
+          </Toolbar>
+        </AppBar>
+      </ElevationOnScroll>
+      <ToolbarMargin />
+    </React.Fragment>
   );
 };
 

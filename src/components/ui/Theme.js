@@ -16,6 +16,11 @@ const theme = createTheme({
       main: `${arcOrange}`,
     },
   },
+  typography: {
+    h3: {
+      fontWeight: 300,
+    },
+  },
 });
 
 export default theme;
