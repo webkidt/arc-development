@@ -1,9 +1,11 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { styled } from '@mui/system';
+
+import logo from '../../assets/logo.svg';
 
 const ElevationOnScroll = props => {
   const { children } = props;
@@ -14,6 +16,7 @@ const ElevationOnScroll = props => {
 
 const ToolbarMargin = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
+  marginBottom: '3em',
 }));
 
 const Header = props => {
@@ -21,8 +24,8 @@ const Header = props => {
     <React.Fragment>
       <ElevationOnScroll {...props}>
         <AppBar position='fixed'>
-          <Toolbar>
-            <Typography variant='h3'>Arc Development</Typography>
+          <Toolbar disableGutters>
+            <Box component='img' src={logo} alt='logo' sx={{ height: '7em' }} />
           </Toolbar>
         </AppBar>
       </ElevationOnScroll>
