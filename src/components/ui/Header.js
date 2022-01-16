@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Button from '@mui/material/Button';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { styled } from '@mui/system';
 
@@ -41,6 +42,19 @@ const Header = props => {
               <HeaderTab label='About Us' />
               <HeaderTab label='Contact Us' />
             </Tabs>
+            <Button
+              variant='contained'
+              color='secondary'
+              sx={theme => ({
+                ...theme.typography.estimate,
+                borderRadius: '50px',
+                marginLeft: '50px',
+                marginRight: '25px',
+                height: '45px',
+              })}
+            >
+              Free Estimate
+            </Button>
           </Toolbar>
         </AppBar>
       </ElevationOnScroll>
