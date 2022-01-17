@@ -2,7 +2,6 @@ import { createTheme } from '@mui/material/styles';
 
 const arcBlue = '#0B72B9';
 const arcOrange = '#FFBA60';
-const white = '#FFFFFF';
 
 const theme = createTheme({
   palette: {
@@ -15,9 +14,6 @@ const theme = createTheme({
     },
     secondary: {
       main: `${arcOrange}`,
-    },
-    text: {
-      secondary: `${white}`,
     },
   },
   typography: {

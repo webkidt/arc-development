@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -29,13 +29,25 @@ const HeaderTab = styled(Tab)(({ theme }) => ({
 }));
 
 const Header = props => {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (e, value) => {
+    setValue(value);
+  };
+
   return (
     <React.Fragment>
       <ElevationOnScroll {...props}>
         <AppBar position='fixed'>
           <Toolbar disableGutters>
             <Box component='img' src={logo} alt='logo' sx={{ height: '7em' }} />
-            <Tabs sx={{ marginLeft: 'auto' }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              textColor='inherit'
+              indicatorColor='primary'
+              sx={{ marginLeft: 'auto' }}
+            >
               <HeaderTab label='Home' />
               <HeaderTab label='Services' />
               <HeaderTab label='The Revolution' />
