@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -36,12 +36,29 @@ const Header = props => {
     setValue(value);
   };
 
+  useEffect(() => {
+    if (window.location.pathname === '/' && value !== 0) setValue(0);
+    else if (window.location.pathname === '/services' && value !== 1) setValue(1);
+    else if (window.location.pathname === '/revolution' && value !== 2) setValue(2);
+    else if (window.location.pathname === '/about' && value !== 3) setValue(3);
+    else if (window.location.pathname === '/contact' && value !== 4) setValue(4);
+    else if (window.location.pathname === '/estimate' && value !== 5) setValue(5);
+  }, [value]);
+
   return (
     <React.Fragment>
       <ElevationOnScroll {...props}>
         <AppBar position='fixed'>
           <Toolbar disableGutters>
-            <Box component='img' src={logo} alt='logo' sx={{ height: '7em' }} />
+            <Button
+              component={Link}
+              to='/'
+              // disableRipple
+              sx={{ padding: 0, '&:hover': { backgroundColor: 'transparent' } }}
+              onClick={() => setValue(0)}
+            >
+              <Box component='img' src={logo} alt='logo' sx={{ height: '8em' }} />
+            </Button>
             <Tabs
               value={value}
               onChange={handleChange}
