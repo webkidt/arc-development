@@ -7,6 +7,7 @@ import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg';
 
@@ -48,11 +49,11 @@ const Header = props => {
               indicatorColor='primary'
               sx={{ marginLeft: 'auto' }}
             >
-              <HeaderTab label='Home' />
-              <HeaderTab label='Services' />
-              <HeaderTab label='The Revolution' />
-              <HeaderTab label='About Us' />
-              <HeaderTab label='Contact Us' />
+              <HeaderTab component={Link} to='/' label='Home' />
+              <HeaderTab component={Link} to='/services' label='Services' />
+              <HeaderTab component={Link} to='/revolution' label='The Revolution' />
+              <HeaderTab component={Link} to='/about' label='About Us' />
+              <HeaderTab component={Link} to='/contact' label='Contact Us' />
             </Tabs>
             <Button
               variant='contained'
