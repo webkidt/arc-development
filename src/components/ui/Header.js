@@ -31,6 +31,7 @@ const HeaderTab = styled(Tab)(({ theme }) => ({
   marginLeft: '25px',
 }));
 
+// cSpell: disable
 const Header = props => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -114,9 +115,46 @@ const Header = props => {
               MenuListProps={{ onMouseLeave: handleClose }}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Custom Software Development</MenuItem>
-              <MenuItem onClick={handleClose}>Mobile App Development</MenuItem>
-              <MenuItem onClick={handleClose}>Website Development</MenuItem>
+              <MenuItem
+                component={Link}
+                to='/services'
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+              >
+                Services
+              </MenuItem>
+              <MenuItem
+                component={Link}
+                to='/customsoftware'
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+              >
+                Custom Software Development
+              </MenuItem>
+              <MenuItem
+                component={Link}
+                to='/mobileapps'
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+              >
+                Mobile App Development
+              </MenuItem>
+              <MenuItem
+                component={Link}
+                to='/websites'
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+              >
+                Website Development
+              </MenuItem>
             </Menu>
           </Toolbar>
         </AppBar>
