@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +25,12 @@ const ElevationOnScroll = props => {
 const ToolbarMargin = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   marginBottom: '3em',
+  [theme.breakpoints.down('md')]: {
+    marginBottom: '2em',
+  },
+  [theme.breakpoints.only('xs')]: {
+    marginBottom: '1.25em',
+  },
 }));
 
 const HeaderTab = styled(Tab)(({ theme }) => ({
@@ -33,6 +41,8 @@ const HeaderTab = styled(Tab)(({ theme }) => ({
 
 // cSpell: disable
 const Header = props => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -109,6 +119,87 @@ const Header = props => {
     }
   }, [value]);
 
+  const tabs = (
+    <React.Fragment>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        textColor='inherit'
+        indicatorColor='primary'
+        sx={{ marginLeft: 'auto' }}
+      >
+        <HeaderTab component={Link} to='/' label='Home' />
+        <HeaderTab
+          aria-controls={anchorEl ? 'simple-menu' : undefined}
+          aria-haspopup={anchorEl ? 'true' : undefined}
+          aria-expanded={open ? 'true' : undefined}
+          component={Link}
+          to='/services'
+          label='Services'
+          onMouseOver={handleClick}
+        />
+        <HeaderTab component={Link} to='/revolution' label='The Revolution' />
+        <HeaderTab component={Link} to='/about' label='About Us' />
+        <HeaderTab component={Link} to='/contact' label='Contact Us' />
+      </Tabs>
+      <Button
+        variant='contained'
+        color='secondary'
+        sx={theme => ({
+          ...theme.typography.estimate,
+          borderRadius: '50px',
+          marginLeft: '50px',
+          marginRight: '25px',
+          height: '45px',
+        })}
+      >
+        Free Estimate
+      </Button>
+      <Menu
+        id='simple-menu'
+        anchorEl={anchorEl}
+        open={open}
+        elevation={0}
+        MenuListProps={{ onMouseLeave: handleClose }}
+        sx={theme => ({
+          '& .MuiMenu-paper': {
+            backgroundColor: theme.palette.common.blue,
+            color: '#FFFFFF',
+          },
+        })}
+        onClose={handleClose}
+      >
+        {menuOptions.map((option, index) => (
+          <MenuItem
+            key={option.name}
+            component={Link}
+            to={option.link}
+            sx={theme => ({
+              ...theme.typography.tab,
+              opacity: 0.7,
+              '&:hover': {
+                opacity: 0.9,
+                backgroundColor: '#4444441A',
+              },
+              '&.Mui-selected': {
+                opacity: 1,
+                backgroundColor: 'action.selected',
+              },
+            })}
+            selected={index === selectedIndex}
+            onClick={event => {
+              handleMenuItemClick(event, index);
+              setValue(1);
+              handleClose();
+            }}
+          >
+            {option.name}
+          </MenuItem>
+        ))}
+      </Menu>
+    </React.Fragment>
+  );
+
   return (
     <React.Fragment>
       <ElevationOnScroll {...props}>
@@ -121,84 +212,14 @@ const Header = props => {
               sx={{ padding: 0, '&:hover': { backgroundColor: 'transparent' } }}
               onClick={() => setValue(0)}
             >
-              <Box component='img' src={logo} alt='logo' sx={{ height: '8em' }} />
-            </Button>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              textColor='inherit'
-              indicatorColor='primary'
-              sx={{ marginLeft: 'auto' }}
-            >
-              <HeaderTab component={Link} to='/' label='Home' />
-              <HeaderTab
-                aria-controls={anchorEl ? 'simple-menu' : undefined}
-                aria-haspopup={anchorEl ? 'true' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                component={Link}
-                to='/services'
-                label='Services'
-                onMouseOver={handleClick}
+              <Box
+                component='img'
+                src={logo}
+                alt='logo'
+                sx={{ height: { xs: '5.5em', sm: '7em', md: '8em' } }}
               />
-              <HeaderTab component={Link} to='/revolution' label='The Revolution' />
-              <HeaderTab component={Link} to='/about' label='About Us' />
-              <HeaderTab component={Link} to='/contact' label='Contact Us' />
-            </Tabs>
-            <Button
-              variant='contained'
-              color='secondary'
-              sx={theme => ({
-                ...theme.typography.estimate,
-                borderRadius: '50px',
-                marginLeft: '50px',
-                marginRight: '25px',
-                height: '45px',
-              })}
-            >
-              Free Estimate
             </Button>
-            <Menu
-              id='simple-menu'
-              anchorEl={anchorEl}
-              open={open}
-              elevation={0}
-              MenuListProps={{ onMouseLeave: handleClose }}
-              sx={theme => ({
-                '& .MuiMenu-paper': {
-                  backgroundColor: theme.palette.common.blue,
-                  color: '#FFFFFF',
-                },
-              })}
-              onClose={handleClose}
-            >
-              {menuOptions.map((option, index) => (
-                <MenuItem
-                  key={option.name}
-                  component={Link}
-                  to={option.link}
-                  sx={theme => ({
-                    ...theme.typography.tab,
-                    opacity: 0.7,
-                    '&:hover': {
-                      opacity: 0.9,
-                      backgroundColor: '#4444441A',
-                    },
-                    '&.Mui-selected': {
-                      opacity: 1,
-                      backgroundColor: 'action.selected',
-                    },
-                  })}
-                  selected={index === selectedIndex}
-                  onClick={event => {
-                    handleMenuItemClick(event, index);
-                    setValue(1);
-                    handleClose();
-                  }}
-                >
-                  {option.name}
-                </MenuItem>
-              ))}
-            </Menu>
+            {matches ? null : tabs}
           </Toolbar>
         </AppBar>
       </ElevationOnScroll>
