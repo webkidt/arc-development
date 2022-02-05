@@ -8,5 +8,5 @@
     "**/containers/**/*.js": "javascriptreact",
     "**/hoc/**/*.js": "javascriptreact"
   },
-  "cSpell.words": ["arcdevelopment"]
+  "cSpell.words": ["arcdevelopment", "Swipeable"]
 }
