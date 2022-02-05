@@ -45,6 +45,11 @@ const HeaderTab = styled(Tab)(({ theme }) => ({
   marginLeft: '25px',
 }));
 
+const DrawerItem = styled(ListItemText)(({ theme }) => ({
+  ...theme.typography.tab,
+  color: '#FFFFFF',
+}));
+
 // cSpell: disable
 const Header = props => {
   const theme = useTheme();
@@ -216,6 +221,7 @@ const Header = props => {
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
         open={openDrawer}
+        sx={{ '& .MuiDrawer-paper': { backgroundColor: 'common.blue' } }}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
       >
@@ -226,7 +232,7 @@ const Header = props => {
             to='/'
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>Home</ListItemText>
+            <DrawerItem disableTypography>Home</DrawerItem>
           </ListItemButton>
           <ListItemButton
             divider
@@ -234,7 +240,7 @@ const Header = props => {
             to='/services'
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>Services</ListItemText>
+            <DrawerItem disableTypography>Services</DrawerItem>
           </ListItemButton>
           <ListItemButton
             divider
@@ -242,7 +248,7 @@ const Header = props => {
             to='/revolution'
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>The Revolution</ListItemText>
+            <DrawerItem disableTypography>The Revolution</DrawerItem>
           </ListItemButton>
           <ListItemButton
             divider
@@ -250,7 +256,7 @@ const Header = props => {
             to='/about'
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>About Us</ListItemText>
+            <DrawerItem disableTypography>About Us</DrawerItem>
           </ListItemButton>
           <ListItemButton
             divider
@@ -258,15 +264,16 @@ const Header = props => {
             to='/contact'
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>Contact Us</ListItemText>
+            <DrawerItem disableTypography>Contact Us</DrawerItem>
           </ListItemButton>
           <ListItemButton
             divider
             component={Link}
             to='/estimate'
+            sx={{ backgroundColor: 'common.orange' }}
             onClick={() => setOpenDrawer(false)}
           >
-            <ListItemText disableTypography>Free Estimate</ListItemText>
+            <DrawerItem disableTypography>Free Estimate</DrawerItem>
           </ListItemButton>
         </List>
       </SwipeableDrawer>
