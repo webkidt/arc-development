@@ -45,9 +45,17 @@ const HeaderTab = styled(Tab)(({ theme }) => ({
   marginLeft: '25px',
 }));
 
-const DrawerItem = styled(ListItemText)(({ theme }) => ({
+const DrawerItemButton = styled(ListItemButton)(({ theme }) => ({
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.action.selected,
+    opacity: 1,
+  },
+}));
+
+const DrawerItemText = styled(ListItemText)(({ theme }) => ({
   ...theme.typography.tab,
   color: '#FFFFFF',
+  opacity: 0.7,
 }));
 
 // cSpell: disable
@@ -226,55 +234,109 @@ const Header = props => {
         onOpen={() => setOpenDrawer(true)}
       >
         <List disablePadding>
-          <ListItemButton
+          <DrawerItemButton
             divider
             component={Link}
             to='/'
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 0}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(0);
+            }}
           >
-            <DrawerItem disableTypography>Home</DrawerItem>
-          </ListItemButton>
-          <ListItemButton
+            <DrawerItemText
+              disableTypography
+              sx={value === 0 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              Home
+            </DrawerItemText>
+          </DrawerItemButton>
+          <DrawerItemButton
             divider
             component={Link}
             to='/services'
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 1}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(1);
+            }}
           >
-            <DrawerItem disableTypography>Services</DrawerItem>
-          </ListItemButton>
-          <ListItemButton
+            <DrawerItemText
+              disableTypography
+              sx={value === 1 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              Services
+            </DrawerItemText>
+          </DrawerItemButton>
+          <DrawerItemButton
             divider
             component={Link}
             to='/revolution'
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 2}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(2);
+            }}
           >
-            <DrawerItem disableTypography>The Revolution</DrawerItem>
-          </ListItemButton>
-          <ListItemButton
+            <DrawerItemText
+              disableTypography
+              sx={value === 2 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              The Revolution
+            </DrawerItemText>
+          </DrawerItemButton>
+          <DrawerItemButton
             divider
             component={Link}
             to='/about'
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 3}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(3);
+            }}
           >
-            <DrawerItem disableTypography>About Us</DrawerItem>
-          </ListItemButton>
-          <ListItemButton
+            <DrawerItemText
+              disableTypography
+              sx={value === 3 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              About Us
+            </DrawerItemText>
+          </DrawerItemButton>
+          <DrawerItemButton
             divider
             component={Link}
             to='/contact'
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 4}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(4);
+            }}
           >
-            <DrawerItem disableTypography>Contact Us</DrawerItem>
-          </ListItemButton>
-          <ListItemButton
+            <DrawerItemText
+              disableTypography
+              sx={value === 4 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              Contact Us
+            </DrawerItemText>
+          </DrawerItemButton>
+          <DrawerItemButton
             divider
             component={Link}
             to='/estimate'
             sx={{ backgroundColor: 'common.orange' }}
-            onClick={() => setOpenDrawer(false)}
+            selected={value === 5}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
           >
-            <DrawerItem disableTypography>Free Estimate</DrawerItem>
-          </ListItemButton>
+            <DrawerItemText
+              disableTypography
+              sx={value === 5 ? { opacity: 1 } : { opacity: 0.7 }}
+            >
+              Free Estimate
+            </DrawerItemText>
+          </DrawerItemButton>
         </List>
       </SwipeableDrawer>
       <IconButton
