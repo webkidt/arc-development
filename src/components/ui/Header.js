@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -82,65 +82,72 @@ const Header = props => {
   const handleMenuItemClick = (e, i) => {
     setSelectedIndex(i);
     setAnchorEl(null);
-    console.log(selectedIndex);
   };
 
   const handleClose = e => {
     setAnchorEl(null);
   };
 
-  const menuOptions = [
-    { name: 'Services', link: '/services' },
-    { name: 'Custom Software Development', link: '/customsoftware' },
-    { name: 'Mobile App Development', link: '/mobileapps' },
-    { name: 'Website Development', link: '/websites' },
-  ];
+  const menuOptions = useMemo(
+    () => [
+      { name: 'Services', link: '/services', activeIndex: 1, selectedIndex: 0 },
+      {
+        name: 'Custom Software Development',
+        link: '/customsoftware',
+        activeIndex: 1,
+        selectedIndex: 1,
+      },
+      {
+        name: 'Mobile App Development',
+        link: '/mobileapps',
+        activeIndex: 1,
+        selectedIndex: 2,
+      },
+      {
+        name: 'Website Development',
+        link: '/websites',
+        activeIndex: 1,
+        selectedIndex: 3,
+      },
+    ],
+    []
+  );
+
+  const routes = useMemo(
+    () => [
+      { name: 'Home', link: '/', activeIndex: 0 },
+      {
+        name: 'Services',
+        link: '/services',
+        activeIndex: 1,
+        ariaControls: anchorEl ? 'simple-menu' : undefined,
+        ariaHaspopup: anchorEl ? 'true' : undefined,
+        ariaExpanded: openMenu ? 'true' : undefined,
+        mouseOver: handleClick,
+      },
+      { name: 'The Revolution', link: '/revolution', activeIndex: 2 },
+      { name: 'About Us', link: '/about', activeIndex: 3 },
+      { name: 'Contact Us', link: '/contact', activeIndex: 4 },
+    ],
+    [anchorEl, openMenu]
+  );
 
   useEffect(() => {
-    switch (window.location.pathname) {
-      case '/':
-        if (value !== 0) setValue(0);
-        break;
-      case '/services':
-        if (value !== 1) {
-          setValue(1);
-          setSelectedIndex(0);
-        }
-        break;
-      case '/customsoftware':
-        if (value !== 1) {
-          setValue(1);
-          setSelectedIndex(1);
-        }
-        break;
-      case '/mobileapps':
-        if (value !== 1) {
-          setValue(1);
-          setSelectedIndex(2);
-        }
-        break;
-      case '/websites':
-        if (value !== 1) {
-          setValue(1);
-          setSelectedIndex(3);
-        }
-        break;
-      case '/revolution':
-        if (value !== 2) setValue(2);
-        break;
-      case '/about':
-        if (value !== 3) setValue(3);
-        break;
-      case '/contact':
-        if (value !== 4) setValue(4);
-        break;
-      case '/estimate':
-        if (value !== 5) setValue(5);
-        break;
-      default:
-        break;
-    }
-  }, [value]);
+    [...menuOptions, ...routes].forEach(route => {
+      switch (window.location.pathname) {
+        case `${route.link}`:
+          if (value !== route.activeIndex) {
+            setValue(route.activeIndex);
+            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
+              setSelectedIndex(route.selectedIndex);
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  }, [value, menuOptions, selectedIndex, routes]);
 
   const tabs = (
     <React.Fragment>
@@ -151,19 +158,18 @@ const Header = props => {
         indicatorColor='primary'
         sx={{ marginLeft: 'auto' }}
       >
-        <HeaderTab component={Link} to='/' label='Home' />
-        <HeaderTab
-          aria-controls={anchorEl ? 'simple-menu' : undefined}
-          aria-haspopup={anchorEl ? 'true' : undefined}
-          aria-expanded={openMenu ? 'true' : undefined}
-          component={Link}
-          to='/services'
-          label='Services'
-          onMouseOver={handleClick}
-        />
-        <HeaderTab component={Link} to='/revolution' label='The Revolution' />
-        <HeaderTab component={Link} to='/about' label='About Us' />
-        <HeaderTab component={Link} to='/contact' label='Contact Us' />
+        {routes.map((route, index) => (
+          <HeaderTab
+            key={`${route}${index}`}
+            component={Link}
+            to={route.link}
+            label={route.name}
+            aria-controls={route.ariaControls}
+            aria-haspopup={route.ariaHaspopup}
+            aria-expanded={route.ariaExpanded}
+            onMouseOver={route.mouseOver}
+          />
+        ))}
       </Tabs>
       <Button
         variant='contained'
@@ -180,6 +186,7 @@ const Header = props => {
       </Button>
       <Menu
         id='simple-menu'
+        keepMounted
         anchorEl={anchorEl}
         open={openMenu}
         elevation={0}
@@ -234,91 +241,26 @@ const Header = props => {
         onOpen={() => setOpenDrawer(true)}
       >
         <List disablePadding>
-          <DrawerItemButton
-            divider
-            component={Link}
-            to='/'
-            selected={value === 0}
-            onClick={() => {
-              setOpenDrawer(false);
-              setValue(0);
-            }}
-          >
-            <DrawerItemText
-              disableTypography
-              sx={value === 0 ? { opacity: 1 } : { opacity: 0.7 }}
+          {routes.map(route => (
+            <DrawerItemButton
+              divider
+              key={`${route}${route.activeIndex}`}
+              component={Link}
+              to={route.link}
+              selected={value === route.activeIndex}
+              onClick={() => {
+                setOpenDrawer(false);
+                setValue(route.activeIndex);
+              }}
             >
-              Home
-            </DrawerItemText>
-          </DrawerItemButton>
-          <DrawerItemButton
-            divider
-            component={Link}
-            to='/services'
-            selected={value === 1}
-            onClick={() => {
-              setOpenDrawer(false);
-              setValue(1);
-            }}
-          >
-            <DrawerItemText
-              disableTypography
-              sx={value === 1 ? { opacity: 1 } : { opacity: 0.7 }}
-            >
-              Services
-            </DrawerItemText>
-          </DrawerItemButton>
-          <DrawerItemButton
-            divider
-            component={Link}
-            to='/revolution'
-            selected={value === 2}
-            onClick={() => {
-              setOpenDrawer(false);
-              setValue(2);
-            }}
-          >
-            <DrawerItemText
-              disableTypography
-              sx={value === 2 ? { opacity: 1 } : { opacity: 0.7 }}
-            >
-              The Revolution
-            </DrawerItemText>
-          </DrawerItemButton>
-          <DrawerItemButton
-            divider
-            component={Link}
-            to='/about'
-            selected={value === 3}
-            onClick={() => {
-              setOpenDrawer(false);
-              setValue(3);
-            }}
-          >
-            <DrawerItemText
-              disableTypography
-              sx={value === 3 ? { opacity: 1 } : { opacity: 0.7 }}
-            >
-              About Us
-            </DrawerItemText>
-          </DrawerItemButton>
-          <DrawerItemButton
-            divider
-            component={Link}
-            to='/contact'
-            selected={value === 4}
-            onClick={() => {
-              setOpenDrawer(false);
-              setValue(4);
-            }}
-          >
-            <DrawerItemText
-              disableTypography
-              sx={value === 4 ? { opacity: 1 } : { opacity: 0.7 }}
-            >
-              Contact Us
-            </DrawerItemText>
-          </DrawerItemButton>
+              <DrawerItemText
+                disableTypography
+                sx={value === route.activeIndex ? { opacity: 1 } : { opacity: 0.7 }}
+              >
+                {route.name}
+              </DrawerItemText>
+            </DrawerItemButton>
+          ))}
           <DrawerItemButton
             divider
             component={Link}
