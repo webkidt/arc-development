@@ -192,6 +192,7 @@ const Header = props => {
         elevation={0}
         MenuListProps={{ onMouseLeave: handleClose }}
         sx={theme => ({
+          zIndex: 1302,
           '& .MuiMenu-paper': {
             backgroundColor: theme.palette.common.blue,
             color: '#FFFFFF',
@@ -201,7 +202,7 @@ const Header = props => {
       >
         {menuOptions.map((option, index) => (
           <MenuItem
-            key={option.name}
+            key={`${option}${index}`}
             component={Link}
             to={option.link}
             sx={theme => ({
@@ -240,6 +241,7 @@ const Header = props => {
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
       >
+        <ToolbarMargin />
         <List disablePadding>
           {routes.map(route => (
             <DrawerItemButton
@@ -294,7 +296,7 @@ const Header = props => {
   return (
     <React.Fragment>
       <ElevationOnScroll {...props}>
-        <AppBar position='fixed'>
+        <AppBar position='fixed' sx={{ zIndex: theme => theme.zIndex.modal + 1 }}>
           <Toolbar disableGutters>
             <Button
               component={Link}
