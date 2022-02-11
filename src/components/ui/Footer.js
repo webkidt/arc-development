@@ -29,7 +29,11 @@ const Footer = ({ setValue, setSelectedIndex, ...props }) => {
         position: 'relative',
       }}
     >
-      <Grid container justifyContent='center' sx={{ position: 'absolute' }}>
+      <Grid
+        container
+        justifyContent='center'
+        sx={{ position: 'absolute', display: { xs: 'none', md: 'flex' } }}
+      >
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
             <FooterLink component={Link} to='/' onClick={() => setValue(0)}>
