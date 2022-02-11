@@ -1,7 +1,9 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './ui/Header';
+
 import theme from './ui/Theme';
+import Header from './ui/Header';
+import Footer from './ui/Footer';
 
 // cSpell: disable
 const App = () => {
@@ -20,13 +22,14 @@ const App = () => {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/estimate' element={<Estimate />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
 };
 
 const Home = () => {
-  return <div>Home</div>;
+  return <div style={{height: '2000px'}}>Home</div>;
 };
 
 const Services = () => {
