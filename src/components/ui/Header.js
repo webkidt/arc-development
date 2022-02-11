@@ -59,15 +59,13 @@ const DrawerItemText = styled(ListItemText)(({ theme }) => ({
 }));
 
 // cSpell: disable
-const Header = props => {
+const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
   const iOS =
     typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [openDrawer, setOpenDrawer] = useState(false);
   const openMenu = Boolean(anchorEl);
 
@@ -147,7 +145,7 @@ const Header = props => {
           break;
       }
     });
-  }, [value, menuOptions, selectedIndex, routes]);
+  }, [value, setValue, menuOptions, selectedIndex, setSelectedIndex, routes, props]);
 
   const tabs = (
     <React.Fragment>

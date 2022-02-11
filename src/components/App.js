@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -7,10 +8,18 @@ import Footer from './ui/Footer';
 
 // cSpell: disable
 const App = () => {
+  const [value, setValue] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Header />
+        <Header
+          value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+        />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/services' element={<Services />} />
@@ -22,14 +31,19 @@ const App = () => {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/estimate' element={<Estimate />} />
         </Routes>
-        <Footer />
+        <Footer
+          value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
+        />
       </BrowserRouter>
     </ThemeProvider>
   );
 };
 
 const Home = () => {
-  return <div style={{height: '2000px'}}>Home</div>;
+  return <div style={{ height: '2000px' }}>Home</div>;
 };
 
 const Services = () => {

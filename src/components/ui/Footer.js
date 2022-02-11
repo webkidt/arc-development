@@ -18,7 +18,7 @@ const FooterLink = styled(({ ...props }) => <Grid item {...props} />)({
   textDecoration: 'none',
 });
 
-const Footer = () => {
+const Footer = ({ setValue, setSelectedIndex, ...props }) => {
   return (
     <Box
       component='footer'
@@ -32,56 +32,84 @@ const Footer = () => {
       <Grid container justifyContent='center' sx={{ position: 'absolute' }}>
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
-            <FooterLink component={Link} to='/'>
+            <FooterLink component={Link} to='/' onClick={() => setValue(0)}>
               Home
             </FooterLink>
           </Grid>
         </GridItemWrapper>
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
-            <FooterLink component={Link} to='/services'>
+            <FooterLink
+              component={Link}
+              to='/services'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(0);
+              }}
+            >
               Services
             </FooterLink>
-            <FooterLink component={Link} to='/customsoftware'>
+            <FooterLink
+              component={Link}
+              to='/customsoftware'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(1);
+              }}
+            >
               Custom Software Development
             </FooterLink>
-            <FooterLink component={Link} to='/mobileapps'>
+            <FooterLink
+              component={Link}
+              to='/mobileapps'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
+            >
               Mobile App Development
             </FooterLink>
-            <FooterLink component={Link} to='/websites'>
+            <FooterLink
+              component={Link}
+              to='/websites'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(3);
+              }}
+            >
               Website Development
             </FooterLink>
           </Grid>
         </GridItemWrapper>
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
-            <FooterLink component={Link} to='/revolution'>
+            <FooterLink component={Link} to='/revolution' onClick={() => setValue(2)}>
               The Revolution
             </FooterLink>
-            <FooterLink component={Link} to='/revolution'>
+            <FooterLink component={Link} to='/revolution' onClick={() => setValue(2)}>
               Vision
             </FooterLink>
-            <FooterLink component={Link} to='/revolution'>
+            <FooterLink component={Link} to='/revolution' onClick={() => setValue(2)}>
               Technology
             </FooterLink>
           </Grid>
         </GridItemWrapper>
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
-            <FooterLink component={Link} to='/about'>
+            <FooterLink component={Link} to='/about' onClick={() => setValue(3)}>
               About Us
             </FooterLink>
-            <FooterLink component={Link} to='/about'>
+            <FooterLink component={Link} to='/about' onClick={() => setValue(3)}>
               History
             </FooterLink>
-            <FooterLink component={Link} to='/about'>
+            <FooterLink component={Link} to='/about' onClick={() => setValue(3)}>
               Team
             </FooterLink>
           </Grid>
         </GridItemWrapper>
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
-            <FooterLink component={Link} to='/contact'>
+            <FooterLink component={Link} to='/contact' onClick={() => setValue(4)}>
               Contact Us
             </FooterLink>
           </Grid>
