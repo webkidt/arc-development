@@ -1,14 +1,21 @@
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/system';
 
 import footerAdornment from '../../assets/Footer Adornment.svg';
 
-const FooterLink = styled(({ item, ...props }) => <Grid item {...props} />)({
+// cSpell: disable
+const GridItemWrapper = styled(({ ...props }) => <Grid item {...props} />)({
+  margin: '3em',
+});
+
+const FooterLink = styled(({ ...props }) => <Grid item {...props} />)({
   color: '#FFFFFF',
   fontFamily: 'Arial',
   fontSize: '0.75em',
   fontWeight: 'bold',
+  textDecoration: 'none',
 });
 
 const Footer = () => {
@@ -23,38 +30,62 @@ const Footer = () => {
       }}
     >
       <Grid container justifyContent='center' sx={{ position: 'absolute' }}>
-        <Grid item>
-          <Grid container direction='column'>
-            <FooterLink>Home</FooterLink>
+        <GridItemWrapper>
+          <Grid container direction='column' spacing={2}>
+            <FooterLink component={Link} to='/'>
+              Home
+            </FooterLink>
           </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction='column'>
-            <FooterLink>Services</FooterLink>
-            <FooterLink>Custom Software Development</FooterLink>
-            <FooterLink>Mobile App Development</FooterLink>
-            <FooterLink>Website Development</FooterLink>
+        </GridItemWrapper>
+        <GridItemWrapper>
+          <Grid container direction='column' spacing={2}>
+            <FooterLink component={Link} to='/services'>
+              Services
+            </FooterLink>
+            <FooterLink component={Link} to='/customsoftware'>
+              Custom Software Development
+            </FooterLink>
+            <FooterLink component={Link} to='/mobileapps'>
+              Mobile App Development
+            </FooterLink>
+            <FooterLink component={Link} to='/websites'>
+              Website Development
+            </FooterLink>
           </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction='column'>
-            <FooterLink>The Revolution</FooterLink>
-            <FooterLink>Vision</FooterLink>
-            <FooterLink>Technology</FooterLink>
+        </GridItemWrapper>
+        <GridItemWrapper>
+          <Grid container direction='column' spacing={2}>
+            <FooterLink component={Link} to='/revolution'>
+              The Revolution
+            </FooterLink>
+            <FooterLink component={Link} to='/revolution'>
+              Vision
+            </FooterLink>
+            <FooterLink component={Link} to='/revolution'>
+              Technology
+            </FooterLink>
           </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction='column'>
-            <FooterLink>About Us</FooterLink>
-            <FooterLink>History</FooterLink>
-            <FooterLink>Team</FooterLink>
+        </GridItemWrapper>
+        <GridItemWrapper>
+          <Grid container direction='column' spacing={2}>
+            <FooterLink component={Link} to='/about'>
+              About Us
+            </FooterLink>
+            <FooterLink component={Link} to='/about'>
+              History
+            </FooterLink>
+            <FooterLink component={Link} to='/about'>
+              Team
+            </FooterLink>
           </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction='column'>
-            <FooterLink>Contact Us</FooterLink>
+        </GridItemWrapper>
+        <GridItemWrapper>
+          <Grid container direction='column' spacing={2}>
+            <FooterLink component={Link} to='/contact'>
+              Contact Us
+            </FooterLink>
           </Grid>
-        </Grid>
+        </GridItemWrapper>
       </Grid>
       <Box
         component='img'
