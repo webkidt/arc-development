@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import theme from './ui/Theme';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
+import LandingPage from './LandingPage';
 
 // cSpell: disable
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
           setSelectedIndex={setSelectedIndex}
         />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<LandingPage />} />
           <Route path='/services' element={<Services />} />
           <Route path='/customsoftware' element={<CustomSoftware />} />
           <Route path='/mobileapps' element={<MobileApps />} />
@@ -42,9 +43,9 @@ const App = () => {
   );
 };
 
-const Home = () => {
-  return <div style={{ height: '2000px' }}>Home</div>;
-};
+// const Home = () => {
+//   return <div style={{ height: '2000px' }}>Home</div>;
+// };
 
 const Services = () => {
   return <div>Services</div>;
