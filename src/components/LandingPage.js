@@ -1,10 +1,14 @@
 import Lottie from 'react-lottie';
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import ButtonArrow from './ui/ButtonArrow';
 
 // cSpell: disable
 import animationData from '../animations/landinganimation/data';
+
+// const Animation = styled(Lottie)({marginTop: '2em'});
 
 const LandingPage = () => {
   const defaultOptions = {
@@ -19,11 +23,11 @@ const LandingPage = () => {
   return (
     <Grid container direction='column'>
       <Grid item>
-        <Grid container>
-          <Grid item>
-            <div>
+        <Grid container justifyContent='flex-end' alignItems='center'>
+          <Grid item sm>
+            <Typography variant='h2' align='center'>
               Bringing West Coast Technology <br /> to the Midwest
-            </div>
+            </Typography>
             <Grid container>
               <Grid item>
                 <Button variant='contained'>Free Estimate</Button>
@@ -36,8 +40,22 @@ const LandingPage = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
-            <Lottie options={defaultOptions} height={'100%'} width={'100%'} />
+          <Grid
+            item
+            sm
+            sx={{
+              maxWidth: '50em',
+              minWidth: '21em',
+              marginTop: '2em',
+              marginLeft: '10%',
+            }}
+          >
+            <Box
+              component={Lottie}
+              options={defaultOptions}
+              height={'100%'}
+              width={'100%'}
+            />
           </Grid>
         </Grid>
       </Grid>
