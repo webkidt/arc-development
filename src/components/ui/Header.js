@@ -178,6 +178,9 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
           marginLeft: '50px',
           marginRight: '25px',
           height: '45px',
+          '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+          },
         })}
       >
         Free Estimate
