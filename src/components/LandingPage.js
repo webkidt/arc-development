@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 
@@ -25,12 +26,21 @@ const ServiceLearnBtn = styled(Button)(({ theme }) => ({
   fontSize: '0.7rem',
   height: 35,
   padding: 5,
+  [theme.breakpoints.down('md')]: {
+    marginBottom: '2em',
+  },
 }));
 
-const ServiceIcon = styled('img')({});
+const ServiceIcon = styled('img')(({ theme }) => ({
+  marginLeft: '2em',
+  [theme.breakpoints.down('sm')]: {
+    marginLeft: 0,
+  },
+}));
 
 const LandingPage = () => {
   const theme = useTheme();
+  const matchSM = useMediaQuery(theme.breakpoints.down('md'));
 
   const defaultOptions = {
     loop: true,
@@ -47,8 +57,8 @@ const LandingPage = () => {
       direction='column'
       sx={{ marginTop: { xs: '2em', sm: '3em', lg: '5em' } }}
     >
-      {/*----- Hero Block -----*/}
       <Grid item>
+        {/*----- Hero Block -----*/}
         <Grid container justifyContent='flex-end' alignItems='center'>
           <Grid item sm sx={{ minWidth: '21.5em', marginLeft: { xs: '0', sm: '1em' } }}>
             <Typography variant='h2' align='center'>
@@ -110,10 +120,18 @@ const LandingPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      {/*----- Services Block -----*/}
       <Grid item>
-        <Grid container>
-          <Grid item>
+        {/*----- Services Block -----*/}
+        <Grid
+          container
+          justifyContent={matchSM ? 'center' : undefined}
+          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+        >
+          <Grid
+            item
+            marginLeft={matchSM ? '0' : '5em'}
+            textAlign={matchSM ? 'center' : undefined}
+          >
             <Typography variant='h4'>Custom Software Development</Typography>
             <ServiceSubtitle variant='subtitle1'>
               Save Energy. Save Time. Save Money.
