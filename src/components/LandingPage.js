@@ -4,13 +4,30 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
+import { styled } from '@mui/system';
 
 import ButtonArrow from './ui/ButtonArrow';
+import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 
 // cSpell: disable
 import animationData from '../animations/landinganimation/data';
 
-// const Animation = styled(Lottie)({marginTop: '2em'});
+// const ServiceTitle = styled(Typography)({});
+
+const ServiceSubtitle = styled(Typography)({ marginBottom: '1em' });
+
+// const ServiceSubtext = styled(({ ...props }) => (
+//   <Typography variant='subtitle1' {...props} />
+// ))({});
+
+const ServiceLearnBtn = styled(Button)(({ theme }) => ({
+  ...theme.typography.learnButton,
+  fontSize: '0.7rem',
+  height: 35,
+  padding: 5,
+}));
+
+const ServiceIcon = styled('img')({});
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -30,6 +47,7 @@ const LandingPage = () => {
       direction='column'
       sx={{ marginTop: { xs: '2em', sm: '3em', lg: '5em' } }}
     >
+      {/*----- Hero Block -----*/}
       <Grid item>
         <Grid container justifyContent='flex-end' alignItems='center'>
           <Grid item sm sx={{ minWidth: '21.5em', marginLeft: { xs: '0', sm: '1em' } }}>
@@ -59,13 +77,7 @@ const LandingPage = () => {
                 <Button
                   variant='outlined'
                   sx={theme => ({
-                    borderColor: theme.palette.common.blue,
-                    color: theme.palette.common.blue,
-                    borderWidth: 2,
-                    textTransform: 'none',
-                    borderRadius: 50,
-                    fontFamily: 'Roboto',
-                    fontWeight: 'bold',
+                    ...theme.typography.learnButton,
                     fontSize: '0.9rem',
                     height: 45,
                     width: 145,
@@ -95,6 +107,38 @@ const LandingPage = () => {
               height={'100%'}
               width={'100%'}
             />
+          </Grid>
+        </Grid>
+      </Grid>
+      {/*----- Services Block -----*/}
+      <Grid item>
+        <Grid container>
+          <Grid item>
+            <Typography variant='h4'>Custom Software Development</Typography>
+            <ServiceSubtitle variant='subtitle1'>
+              Save Energy. Save Time. Save Money.
+            </ServiceSubtitle>
+            <Typography variant='subtitle1'>
+              Complete digital solutions, from investigation to{' '}
+              <Box
+                component='span'
+                sx={{
+                  fontFamily: 'Pacifico',
+                  color: theme => theme.palette.common.orange,
+                }}
+              >
+                celebration.
+              </Box>
+            </Typography>
+            <ServiceLearnBtn variant='outlined'>
+              <Box component='span' mr='10px'>
+                Learn More
+              </Box>
+              <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
+            </ServiceLearnBtn>
+          </Grid>
+          <Grid item>
+            <ServiceIcon alt='custom software icon' src={customSoftwareIcon} />
           </Grid>
         </Grid>
       </Grid>
