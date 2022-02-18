@@ -83,7 +83,7 @@ const Footer = ({ setValue, setSelectedIndex, ...props }) => {
                 setSelectedIndex(2);
               }}
             >
-              Mobile App Development
+              iOS/Android App Development
             </FooterLink>
             <FooterLink
               component={Link}

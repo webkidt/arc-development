@@ -7,11 +7,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 
-import ButtonArrow from './ui/ButtonArrow';
-import customSoftwareIcon from '../assets/Custom Software Icon.svg';
-
 // cSpell: disable
+import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
+import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import mobileIcon from '../assets/mobileIcon.svg';
 
 // const ServiceTitle = styled(Typography)({});
 
@@ -121,7 +121,7 @@ const LandingPage = () => {
         </Grid>
       </Grid>
       <Grid item>
-        {/*----- Services Block -----*/}
+        {/*----- Custom Software Block -----*/}
         <Grid
           container
           justifyContent={matchSM ? 'center' : undefined}
@@ -157,6 +157,34 @@ const LandingPage = () => {
           </Grid>
           <Grid item>
             <ServiceIcon alt='custom software icon' src={customSoftwareIcon} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----- iOS/Android Block -----*/}
+        <Grid
+          container
+          justifyContent={matchSM ? 'center' : 'flex-end'}
+          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+        >
+          <Grid item textAlign={matchSM ? 'center' : undefined}>
+            <Typography variant='h4'>iOS/Android Development</Typography>
+            <ServiceSubtitle variant='subtitle1'>
+              Extend Functionality. Extend Access. Increase Engagment.
+            </ServiceSubtitle>
+            <Typography variant='subtitle1'>
+              Integrate your web experience or create a standalone app{' '}
+              {matchSM ? null : <br />} with either mobile platform.
+            </Typography>
+            <ServiceLearnBtn variant='outlined'>
+              <Box component='span' mr='10px'>
+                Learn More
+              </Box>
+              <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
+            </ServiceLearnBtn>
+          </Grid>
+          <Grid item marginRight={matchSM ? '0' : '5em'}>
+            <ServiceIcon alt='mobile phone icon' src={mobileIcon} />
           </Grid>
         </Grid>
       </Grid>
