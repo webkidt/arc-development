@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
@@ -13,6 +15,7 @@ import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import mobileIcon from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
+import revolutionBackground from '../assets/repeatingBackground.svg';
 
 // const ServiceTitle = styled(Typography)({});
 
@@ -39,13 +42,22 @@ const ServiceIcon = styled('img')(({ theme }) => ({
   },
 }));
 
+const RevolutionBackground = styled('div')({
+  backgroundImage: `url(${revolutionBackground})`,
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  height: '100%',
+  width: '100%',
+});
+
 const LandingPage = () => {
   const theme = useTheme();
   const matchSM = useMediaQuery(theme.breakpoints.down('md'));
 
   const defaultOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
@@ -218,6 +230,62 @@ const LandingPage = () => {
           <Grid item>
             <ServiceIcon alt='website icon' src={websitesIcon} />
           </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid
+          container
+          justifyContent='center'
+          alignItems='center'
+          sx={{ height: '100em', marginTop: '12em' }}
+        >
+          <Card
+            sx={{
+              position: 'absolute',
+              boxShadow: theme => theme.shadows[10],
+              borderRadius: { xs: 0, md: '15px' },
+              paddingTop: { xs: '8em', md: '10em' },
+              paddingBottom: { xs: '8em', md: '10em' },
+              paddingLeft: { xs: '0', md: '10em' },
+              paddingRight: { xs: 0, md: '10em' },
+              width: { xs: '100%', md: 'auto' },
+            }}
+          >
+            <CardContent>
+              <Grid container direction='column' sx={{ textAlign: 'center' }}>
+                <Grid item>
+                  <Typography variant='h3' gutterBottom>
+                    The Revolution
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant='subtitle1'>
+                    Visionary insights coupled with cutting-edge technology is a recipe
+                    for revolution.
+                  </Typography>
+                  <Button
+                    variant='outlined'
+                    sx={theme => ({
+                      ...theme.typography.learnButton,
+                      fontSize: '0.9rem',
+                      height: 45,
+                      width: 145,
+                    })}
+                  >
+                    <Box component='span' mr='10px'>
+                      Learn More
+                    </Box>
+                    <ButtonArrow
+                      width={15}
+                      height={15}
+                      fill={theme.palette.common.blue}
+                    />
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+          <RevolutionBackground />
         </Grid>
       </Grid>
     </Grid>
