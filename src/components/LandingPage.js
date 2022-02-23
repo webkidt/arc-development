@@ -12,6 +12,7 @@ import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import mobileIcon from '../assets/mobileIcon.svg';
+import websitesIcon from '../assets/websiteIcon.svg';
 
 // const ServiceTitle = styled(Typography)({});
 
@@ -185,6 +186,37 @@ const LandingPage = () => {
           </Grid>
           <Grid item marginRight={matchSM ? '0' : '5em'}>
             <ServiceIcon alt='mobile phone icon' src={mobileIcon} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----- Websites Block -----*/}
+        <Grid
+          container
+          justifyContent={matchSM ? 'center' : undefined}
+          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+        >
+          <Grid
+            item
+            marginLeft={matchSM ? '0' : '5em'}
+            textAlign={matchSM ? 'center' : undefined}
+          >
+            <Typography variant='h4'>Website Development</Typography>
+            <ServiceSubtitle variant='subtitle1'>
+              Reach More. Discover More. Sell More.
+            </ServiceSubtitle>
+            <Typography variant='subtitle1'>
+              Optimized for Search Engines, built for speed.
+            </Typography>
+            <ServiceLearnBtn variant='outlined'>
+              <Box component='span' mr='10px'>
+                Learn More
+              </Box>
+              <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
+            </ServiceLearnBtn>
+          </Grid>
+          <Grid item>
+            <ServiceIcon alt='website icon' src={websitesIcon} />
           </Grid>
         </Grid>
       </Grid>
