@@ -16,6 +16,7 @@ import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import mobileIcon from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
 import revolutionBackground from '../assets/repeatingBackground.svg';
+import infoBackground from '../assets/infoBackground.svg';
 
 // const ServiceTitle = styled(Typography)({});
 
@@ -25,7 +26,7 @@ const ServiceSubtitle = styled(Typography)({ marginBottom: '1em' });
 //   <Typography variant='subtitle1' {...props} />
 // ))({});
 
-const ServiceLearnBtn = styled(Button)(({ theme }) => ({
+const LearnMoreBtn = styled(Button)(({ theme }) => ({
   ...theme.typography.learnButton,
   fontSize: '0.7rem',
   height: 35,
@@ -44,6 +45,15 @@ const ServiceIcon = styled('img')(({ theme }) => ({
 
 const RevolutionBackground = styled('div')({
   backgroundImage: `url(${revolutionBackground})`,
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  height: '100%',
+  width: '100%',
+});
+
+const InfoBackground = styled('div')({
+  backgroundImage: `url(${infoBackground})`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -161,12 +171,12 @@ const LandingPage = () => {
                 celebration.
               </Box>
             </Typography>
-            <ServiceLearnBtn variant='outlined'>
+            <LearnMoreBtn variant='outlined'>
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
               <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
-            </ServiceLearnBtn>
+            </LearnMoreBtn>
           </Grid>
           <Grid item>
             <ServiceIcon alt='custom software icon' src={customSoftwareIcon} />
@@ -189,12 +199,12 @@ const LandingPage = () => {
               Integrate your web experience or create a standalone app{' '}
               {matchSM ? null : <br />} with either mobile platform.
             </Typography>
-            <ServiceLearnBtn variant='outlined'>
+            <LearnMoreBtn variant='outlined'>
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
               <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
-            </ServiceLearnBtn>
+            </LearnMoreBtn>
           </Grid>
           <Grid item marginRight={matchSM ? '0' : '5em'}>
             <ServiceIcon alt='mobile phone icon' src={mobileIcon} />
@@ -220,12 +230,12 @@ const LandingPage = () => {
             <Typography variant='subtitle1'>
               Optimized for Search Engines, built for speed.
             </Typography>
-            <ServiceLearnBtn variant='outlined'>
+            <LearnMoreBtn variant='outlined'>
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
               <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
-            </ServiceLearnBtn>
+            </LearnMoreBtn>
           </Grid>
           <Grid item>
             <ServiceIcon alt='website icon' src={websitesIcon} />
@@ -233,6 +243,7 @@ const LandingPage = () => {
         </Grid>
       </Grid>
       <Grid item>
+        {/*----- The Revolution Block -----*/}
         <Grid
           container
           justifyContent='center'
@@ -286,6 +297,31 @@ const LandingPage = () => {
             </CardContent>
           </Card>
           <RevolutionBackground />
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----- Information Block -----*/}
+        <Grid container alignItems='center' sx={{ height: '80em' }}>
+          <Grid item sx={{ position: 'absolute', marginLeft: '5em' }}>
+            <Grid container direction='column'>
+              <Typography variant='h2' sx={{ color: '#FFFFFF' }}>
+                About Us
+              </Typography>
+              <Typography variant='subtitle2'>Let's get personal.</Typography>
+              <Grid item>
+                <LearnMoreBtn
+                  variant='outlined'
+                  sx={{ color: 'white', borderColor: 'white' }}
+                >
+                  <Box component='span' mr='10px'>
+                    Learn More
+                  </Box>
+                  <ButtonArrow width={10} height={10} fill='#FFFFFF' />
+                </LearnMoreBtn>
+              </Grid>
+            </Grid>
+          </Grid>
+          <InfoBackground />
         </Grid>
       </Grid>
     </Grid>
