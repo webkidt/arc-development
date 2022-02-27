@@ -64,6 +64,7 @@ const InfoBackground = styled('div')({
 const LandingPage = () => {
   const theme = useTheme();
   const matchSM = useMediaQuery(theme.breakpoints.down('md'));
+  // const matchXS = useMediaQuery(theme.breakpoints.down('sm'));
 
   const defaultOptions = {
     loop: true,
@@ -302,22 +303,63 @@ const LandingPage = () => {
       <Grid item>
         {/*----- Information Block -----*/}
         <Grid container alignItems='center' sx={{ height: '80em' }}>
-          <Grid item sx={{ position: 'absolute', marginLeft: '5em' }}>
-            <Grid container direction='column'>
-              <Typography variant='h2' sx={{ color: '#FFFFFF' }}>
-                About Us
-              </Typography>
-              <Typography variant='subtitle2'>Let's get personal.</Typography>
-              <Grid item>
-                <LearnMoreBtn
-                  variant='outlined'
-                  sx={{ color: 'white', borderColor: 'white' }}
-                >
-                  <Box component='span' mr='10px'>
-                    Learn More
-                  </Box>
-                  <ButtonArrow width={10} height={10} fill='#FFFFFF' />
-                </LearnMoreBtn>
+          <Grid
+            container
+            sx={{
+              position: 'absolute',
+              flexDirection: { xs: 'column', sm: 'row' },
+              textAlign: { xs: 'center', sm: 'inherit' },
+              rowGap: { xs: 10, sm: 0 },
+            }}
+          >
+            <Grid item sm sx={{ marginLeft: { xs: 0, sm: '2em', md: '5em' } }}>
+              <Grid container direction='column'>
+                <Typography variant='h2' sx={{ color: '#FFFFFF' }}>
+                  About Us
+                </Typography>
+                <Typography variant='subtitle2'>Let's get personal.</Typography>
+                <Grid item>
+                  <LearnMoreBtn
+                    variant='outlined'
+                    sx={{ color: 'white', borderColor: 'white' }}
+                  >
+                    <Box component='span' mr='10px'>
+                      Learn More
+                    </Box>
+                    <ButtonArrow width={10} height={10} fill='#FFFFFF' />
+                  </LearnMoreBtn>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              sm
+              sx={{
+                marginRight: { xs: 0, sm: '2em', md: '5em' },
+                textAlign: { xs: 'center', sm: 'right' },
+              }}
+            >
+              <Grid container direction='column'>
+                <Typography variant='h2' sx={{ color: '#FFFFFF' }}>
+                  Contact Us
+                </Typography>
+                <Typography variant='subtitle2'>
+                  Say hello!{' '}
+                  <span role='img' aria-label='waving hand'>
+                    👋
+                  </span>
+                </Typography>
+                <Grid item>
+                  <LearnMoreBtn
+                    variant='outlined'
+                    sx={{ color: 'white', borderColor: 'white' }}
+                  >
+                    <Box component='span' mr='10px'>
+                      Learn More
+                    </Box>
+                    <ButtonArrow width={10} height={10} fill='#FFFFFF' />
+                  </LearnMoreBtn>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
