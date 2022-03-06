@@ -1,3 +1,4 @@
+// cSpell: disable
 import Lottie from 'react-lottie';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -9,7 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 
-// cSpell: disable
+// import CallToAction from './ui/CallToAction';
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
@@ -149,7 +150,7 @@ const LandingPage = () => {
         <Grid
           container
           justifyContent={matchSM ? 'center' : undefined}
-          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
         >
           <Grid
             item
@@ -189,7 +190,7 @@ const LandingPage = () => {
         <Grid
           container
           justifyContent={matchSM ? 'center' : 'flex-end'}
-          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
         >
           <Grid item textAlign={matchSM ? 'center' : undefined}>
             <Typography variant='h4'>iOS/Android Development</Typography>
@@ -217,7 +218,7 @@ const LandingPage = () => {
         <Grid
           container
           justifyContent={matchSM ? 'center' : undefined}
-          sx={{ marginTop: '12em', padding: { xs: '25px', md: '0' } }}
+          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
         >
           <Grid
             item
@@ -365,6 +366,10 @@ const LandingPage = () => {
           </Grid>
           <InfoBackground />
         </Grid>
+      </Grid>
+      <Grid item>
+        {/*----- Call To Action Block -----*/}
+        {/* <CallToAction /> */}
       </Grid>
     </Grid>
   );

@@ -31,10 +31,16 @@ const ElevationOnScroll = props => {
 const ToolbarMargin = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   marginBottom: '3em',
-  [theme.breakpoints.down('md')]: {
+  // [theme.breakpoints.down('md')]: {
+  //   marginBottom: '2em',
+  // },
+  [theme.breakpoints.down('lg')]: {
     marginBottom: '2em',
   },
-  [theme.breakpoints.only('xs')]: {
+  // [theme.breakpoints.only('xs')]: {
+  //   marginBottom: '1.25em',
+  // },
+  [theme.breakpoints.down('sm')]: {
     marginBottom: '1.25em',
   },
 }));
@@ -61,7 +67,8 @@ const DrawerItemText = styled(ListItemText)(({ theme }) => ({
 // cSpell: disable
 const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  // const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const matches = useMediaQuery(theme.breakpoints.down('lg'));
   const iOS =
     typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -310,7 +317,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
                 component='img'
                 src={logo}
                 alt='logo'
-                sx={{ height: { xs: '5.5em', sm: '7em', md: '8em' } }}
+                sx={{ height: { xs: '5.5em', sm: '7em', lg: '8em' } }}
               />
             </Button>
             {matches ? drawer : tabs}

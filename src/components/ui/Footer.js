@@ -44,7 +44,7 @@ const Footer = ({ setValue, setSelectedIndex, ...props }) => {
       <Grid
         container
         justifyContent='center'
-        sx={{ position: 'absolute', display: { xs: 'none', md: 'flex' } }}
+        sx={{ position: 'absolute', display: { xs: 'none', lg: 'flex' } }}
       >
         <GridItemWrapper>
           <Grid container direction='column' spacing={2}>
@@ -135,7 +135,7 @@ const Footer = ({ setValue, setSelectedIndex, ...props }) => {
         component='img'
         alt='black decorative slash'
         src={footerAdornment}
-        sx={{ width: { xs: '15em', sm: '21em', md: '25em' }, verticalAlign: 'bottom' }}
+        sx={{ width: { xs: '15em', sm: '21em', lg: '25em' }, verticalAlign: 'bottom' }}
       />
       <Grid
         container
