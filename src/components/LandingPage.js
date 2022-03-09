@@ -10,7 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/system';
 
-// import CallToAction from './ui/CallToAction';
+import CallToAction from './ui/CallToAction';
 import ButtonArrow from './ui/ButtonArrow';
 import animationData from '../animations/landinganimation/data';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
@@ -19,13 +19,9 @@ import websitesIcon from '../assets/websiteIcon.svg';
 import revolutionBackground from '../assets/repeatingBackground.svg';
 import infoBackground from '../assets/infoBackground.svg';
 
-// const ServiceTitle = styled(Typography)({});
 
 const ServiceSubtitle = styled(Typography)({ marginBottom: '1em' });
 
-// const ServiceSubtext = styled(({ ...props }) => (
-//   <Typography variant='subtitle1' {...props} />
-// ))({});
 
 const LearnMoreBtn = styled(Button)(({ theme }) => ({
   ...theme.typography.learnButton,
@@ -369,7 +365,7 @@ const LandingPage = () => {
       </Grid>
       <Grid item>
         {/*----- Call To Action Block -----*/}
-        {/* <CallToAction /> */}
+        <CallToAction />
       </Grid>
     </Grid>
   );

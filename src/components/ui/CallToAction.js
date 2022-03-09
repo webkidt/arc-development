@@ -6,23 +6,47 @@ import { useTheme, styled } from '@mui/material/styles';
 
 import ButtonArrow from './ButtonArrow';
 import background from '../../assets/background.jpg';
-// import mobileBackground from '../../assets/mobileBackground.jpg';
+import mobileBackground from '../../assets/mobileBackground.jpg';
 
-const Background = styled('div')(({ theme }) => ({
+const BackgroundContainer = styled(Grid)(({ theme }) => ({
   backgroundImage: `url(${background})`,
   backgroundPosition: 'center',
   backgroundSize: 'cover',
+  backgroundAttachment: 'fixed',
   backgroundRepeat: 'no-repeat',
-  height: '100%',
+  height: '60em',
   width: '100%',
+  [theme.breakpoints.down('lg')]: {
+    backgroundImage: `url(${mobileBackground})`,
+    backgroundAttachment: 'inherit',
+  },
+  [theme.breakpoints.up('xl')]: {
+    backgroundAttachment: 'inherit',
+  },
 }));
 
 const CallToAction = () => {
   const theme = useTheme();
 
   return (
-    <Grid container>
-      <Grid item>
+    <BackgroundContainer
+      container
+      sx={{
+        alignItems: 'center',
+        flexDirection: {
+          xs: 'column',
+          md: 'row',
+        },
+        justifyContent: { xs: 'center', md: 'space-between' },
+      }}
+    >
+      <Grid
+        item
+        sx={{
+          marginLeft: { xs: 0, md: '5em' },
+          textAlign: { xs: 'center', md: 'inherit' },
+        }}
+      >
         <Grid container direction='column'>
           <Grid item>
             <Typography variant='h2'>
@@ -30,10 +54,10 @@ const CallToAction = () => {
               <br />
               Revolutionary Result.
             </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant='subtitle2' sx={{ fontSize: '1.5rem' }}>
               Take advantage of the 21st Century.
             </Typography>
-            <Grid item>
+            <Grid container item sx={{ justifyContent: { xs: 'center', md: undefined } }}>
               <Button
                 variant='outlined'
                 sx={theme => ({
@@ -53,8 +77,24 @@ const CallToAction = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Background />
-    </Grid>
+      <Grid item>
+        <Button
+          variant='contained'
+          sx={theme => ({
+            ...theme.typography.estimate,
+            borderRadius: 50,
+            height: 80,
+            width: 205,
+            backgroundColor: theme.palette.common.orange,
+            fontSize: '1.5rem',
+            marginRight: { xs: 0, md: '5em' },
+            marginLeft: { xs: 0, md: '2em' },
+          })}
+        >
+          Free Estimate
+        </Button>
+      </Grid>
+    </BackgroundContainer>
   );
 };
 
