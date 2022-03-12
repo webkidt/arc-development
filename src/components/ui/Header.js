@@ -31,24 +31,12 @@ const ElevationOnScroll = props => {
 const ToolbarMargin = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
   marginBottom: '3em',
-  // [theme.breakpoints.down('md')]: {
-  //   marginBottom: '2em',
-  // },
   [theme.breakpoints.down('lg')]: {
     marginBottom: '2em',
   },
-  // [theme.breakpoints.only('xs')]: {
-  //   marginBottom: '1.25em',
-  // },
   [theme.breakpoints.down('sm')]: {
     marginBottom: '1.25em',
   },
-}));
-
-const HeaderTab = styled(Tab)(({ theme }) => ({
-  ...theme.typography.tab,
-  minWidth: 10,
-  marginLeft: '25px',
 }));
 
 const DrawerItemButton = styled(ListItemButton)(({ theme }) => ({
@@ -133,6 +121,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
       { name: 'The Revolution', link: '/revolution', activeIndex: 2 },
       { name: 'About Us', link: '/about', activeIndex: 3 },
       { name: 'Contact Us', link: '/contact', activeIndex: 4 },
+      // { name: 'Estimate', link: '/estimate', activeIndex: 5 },
     ],
     [anchorEl, openMenu]
   );
@@ -147,6 +136,9 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
               setSelectedIndex(route.selectedIndex);
             }
           }
+          break;
+        case '/estimate':
+          setValue(5);
           break;
         default:
           break;
@@ -164,7 +156,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
         sx={{ marginLeft: 'auto' }}
       >
         {routes.map((route, index) => (
-          <HeaderTab
+          <Tab
             key={`${route}${index}`}
             component={Link}
             to={route.link}
@@ -172,11 +164,28 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
             aria-controls={route.ariaControls}
             aria-haspopup={route.ariaHaspopup}
             aria-expanded={route.ariaExpanded}
+            // sx={theme => ({
+            //   ...theme.typography.tab,
+            //   minWidth: 10,
+            //   marginLeft: '25px',
+            //   display: index === 5 ? 'none' : 'inline-flex',
+            // })}
             onMouseOver={route.mouseOver}
           />
         ))}
+        <Tab
+          value={5}
+          label='effff'
+          sx={{
+            display: value === 5 ? 'inline-flex' : 'none',
+            position: 'absolute',
+            top: '-50em',
+          }}
+        />
       </Tabs>
       <Button
+        component={Link}
+        to='/estimate'
         variant='contained'
         color='secondary'
         sx={theme => ({
@@ -189,6 +198,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
             backgroundColor: theme.palette.secondary.light,
           },
         })}
+        onClick={() => setValue(5)}
       >
         Free Estimate
       </Button>

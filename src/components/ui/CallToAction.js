@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -25,7 +26,7 @@ const BackgroundContainer = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const CallToAction = () => {
+const CallToAction = ({ setValue }) => {
   const theme = useTheme();
 
   return (
@@ -59,6 +60,8 @@ const CallToAction = () => {
             </Typography>
             <Grid container item sx={{ justifyContent: { xs: 'center', md: undefined } }}>
               <Button
+                component={Link}
+                to='/revolution'
                 variant='outlined'
                 sx={theme => ({
                   ...theme.typography.learnButton,
@@ -67,6 +70,7 @@ const CallToAction = () => {
                   padding: '5px',
                   marginBottom: { xs: '2em', md: 'auto' },
                 })}
+                onClick={() => setValue(2)}
               >
                 <Box component='span' mr='5px'>
                   Learn More
@@ -79,6 +83,8 @@ const CallToAction = () => {
       </Grid>
       <Grid item>
         <Button
+          component={Link}
+          to='/estimate'
           variant='contained'
           sx={theme => ({
             ...theme.typography.estimate,
@@ -89,7 +95,11 @@ const CallToAction = () => {
             fontSize: '1.5rem',
             marginRight: { xs: 0, md: '5em' },
             marginLeft: { xs: 0, md: '2em' },
+            '&:hover': {
+              backgroundColor: theme.palette.secondary.light,
+            },
           })}
+          onClick={() => setValue(5)}
         >
           Free Estimate
         </Button>

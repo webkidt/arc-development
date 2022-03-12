@@ -22,7 +22,12 @@ const App = () => {
           setSelectedIndex={setSelectedIndex}
         />
         <Routes>
-          <Route path='/' element={<LandingPage />} />
+          <Route
+            path='/'
+            element={
+              <LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />
+            }
+          />
           <Route path='/services' element={<Services />} />
           <Route path='/customsoftware' element={<CustomSoftware />} />
           <Route path='/mobileapps' element={<MobileApps />} />
@@ -32,12 +37,7 @@ const App = () => {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/estimate' element={<Estimate />} />
         </Routes>
-        <Footer
-          value={value}
-          setValue={setValue}
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
+        <Footer selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -1,5 +1,6 @@
 // cSpell: disable
 import Lottie from 'react-lottie';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -19,9 +20,7 @@ import websitesIcon from '../assets/websiteIcon.svg';
 import revolutionBackground from '../assets/repeatingBackground.svg';
 import infoBackground from '../assets/infoBackground.svg';
 
-
 const ServiceSubtitle = styled(Typography)({ marginBottom: '1em' });
-
 
 const LearnMoreBtn = styled(Button)(({ theme }) => ({
   ...theme.typography.learnButton,
@@ -58,7 +57,7 @@ const InfoBackground = styled('div')({
   width: '100%',
 });
 
-const LandingPage = () => {
+const LandingPage = ({ setValue, setSelectedIndex, ...props }) => {
   const theme = useTheme();
   const matchSM = useMediaQuery(theme.breakpoints.down('md'));
   // const matchXS = useMediaQuery(theme.breakpoints.down('sm'));
@@ -88,6 +87,8 @@ const LandingPage = () => {
             <Grid container justifyContent='center' mt='1em'>
               <Grid item>
                 <Button
+                  component={Link}
+                  to='/estimate'
                   variant='contained'
                   sx={theme => ({
                     ...theme.typography.estimate,
@@ -100,12 +101,15 @@ const LandingPage = () => {
                       backgroundColor: theme.palette.secondary.light,
                     },
                   })}
+                  onClick={() => setValue(5)}
                 >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
                 <Button
+                  component={Link}
+                  to='/revolution'
                   variant='outlined'
                   sx={theme => ({
                     ...theme.typography.learnButton,
@@ -113,6 +117,7 @@ const LandingPage = () => {
                     height: 45,
                     width: 145,
                   })}
+                  onClick={() => setValue(2)}
                 >
                   <Box component='span' mr='10px'>
                     Learn More
@@ -169,7 +174,15 @@ const LandingPage = () => {
                 celebration.
               </Box>
             </Typography>
-            <LearnMoreBtn variant='outlined'>
+            <LearnMoreBtn
+              component={Link}
+              to='/customsoftware'
+              variant='outlined'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(1);
+              }}
+            >
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
@@ -197,7 +210,15 @@ const LandingPage = () => {
               Integrate your web experience or create a standalone app{' '}
               {matchSM ? null : <br />} with either mobile platform.
             </Typography>
-            <LearnMoreBtn variant='outlined'>
+            <LearnMoreBtn
+              component={Link}
+              to='/mobileapps'
+              variant='outlined'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
+            >
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
@@ -228,7 +249,15 @@ const LandingPage = () => {
             <Typography variant='subtitle1'>
               Optimized for Search Engines, built for speed.
             </Typography>
-            <LearnMoreBtn variant='outlined'>
+            <LearnMoreBtn
+              component={Link}
+              to='/websites'
+              variant='outlined'
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(3);
+              }}
+            >
               <Box component='span' mr='10px'>
                 Learn More
               </Box>
@@ -273,6 +302,8 @@ const LandingPage = () => {
                     for revolution.
                   </Typography>
                   <Button
+                    component={Link}
+                    to='/revolution'
                     variant='outlined'
                     sx={theme => ({
                       ...theme.typography.learnButton,
@@ -280,6 +311,7 @@ const LandingPage = () => {
                       height: 45,
                       width: 145,
                     })}
+                    onClick={() => setValue(2)}
                   >
                     <Box component='span' mr='10px'>
                       Learn More
@@ -317,8 +349,11 @@ const LandingPage = () => {
                 <Typography variant='subtitle2'>Let's get personal.</Typography>
                 <Grid item>
                   <LearnMoreBtn
+                    component={Link}
+                    to='/about'
                     variant='outlined'
                     sx={{ color: 'white', borderColor: 'white' }}
+                    onClick={() => setValue(3)}
                   >
                     <Box component='span' mr='10px'>
                       Learn More
@@ -348,8 +383,11 @@ const LandingPage = () => {
                 </Typography>
                 <Grid item>
                   <LearnMoreBtn
+                    component={Link}
+                    to='/contact'
                     variant='outlined'
                     sx={{ color: 'white', borderColor: 'white' }}
+                    onClick={() => setValue(4)}
                   >
                     <Box component='span' mr='10px'>
                       Learn More
@@ -365,7 +403,7 @@ const LandingPage = () => {
       </Grid>
       <Grid item>
         {/*----- Call To Action Block -----*/}
-        <CallToAction />
+        <CallToAction setValue={setValue} />
       </Grid>
     </Grid>
   );
