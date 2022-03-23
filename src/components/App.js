@@ -6,6 +6,7 @@ import theme from './ui/Theme';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
+import Services from './Services';
 
 // cSpell: disable
 const App = () => {
@@ -28,7 +29,10 @@ const App = () => {
               <LandingPage setValue={setValue} setSelectedIndex={setSelectedIndex} />
             }
           />
-          <Route path='/services' element={<Services />} />
+          <Route
+            path='/services'
+            element={<Services setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
           <Route path='/customsoftware' element={<CustomSoftware />} />
           <Route path='/mobileapps' element={<MobileApps />} />
           <Route path='/websites' element={<Websites />} />
@@ -46,10 +50,6 @@ const App = () => {
 // const Home = () => {
 //   return <div style={{ height: '2000px' }}>Home</div>;
 // };
-
-const Services = () => {
-  return <div>Services</div>;
-};
 
 const CustomSoftware = () => {
   return <div>Custom Software</div>;
