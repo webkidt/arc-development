@@ -52,7 +52,6 @@ const DrawerItemText = styled(ListItemText)(({ theme }) => ({
   opacity: 0.7,
 }));
 
-// cSpell: disable
 const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) => {
   const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.down('md'));

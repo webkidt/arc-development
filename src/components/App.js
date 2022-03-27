@@ -8,7 +8,6 @@ import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
 import Services from './Services';
 
-// cSpell: disable
 const App = () => {
   const [value, setValue] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);

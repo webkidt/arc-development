@@ -8,7 +8,6 @@ import facebook from '../../assets/facebook.svg';
 import twitter from '../../assets/twitter.svg';
 import instagram from '../../assets/instagram.svg';
 
-// cSpell: disable
 const GridItemWrapper = styled(({ ...props }) => <Grid item {...props} />)({
   margin: '3em',
 });

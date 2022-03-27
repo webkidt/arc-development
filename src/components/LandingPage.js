@@ -1,4 +1,3 @@
-// cSpell: disable
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
