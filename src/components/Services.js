@@ -13,6 +13,18 @@ import customSoftwareIcon from '../assets/Custom Software Icon.svg';
 import mobileIcon from '../assets/mobileIcon.svg';
 import websitesIcon from '../assets/websiteIcon.svg';
 
+const ServiceContainer = styled(Grid)(({ theme }) => ({
+  marginTop: '10em',
+  [theme.breakpoints.down('md')]: {
+    padding: 25,
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: 5,
+  },
+}));
+
+const ServiceSubtitle = styled(Typography)({ marginBottom: '1em' });
+
 const LearnMoreBtn = styled(Button)(({ theme }) => ({
   ...theme.typography.learnButton,
   fontSize: '0.7rem',
@@ -36,18 +48,30 @@ const Services = ({ setValue, setSelectedIndex, ...props }) => {
 
   return (
     <Grid container direction='column'>
+      <Grid
+        item
+        sx={{ marginLeft: matchSM ? 0 : '5em', marginTop: matchSM ? '1em' : '2em' }}
+      >
+        <Typography gutterBottom variant='h2' align={matchSM ? 'center' : undefined}>
+          Services
+        </Typography>
+      </Grid>
       <Grid item>
         {/*----- iOS/Android Block -----*/}
-        <Grid
+        <ServiceContainer
           container
           justifyContent={matchSM ? 'center' : 'flex-end'}
-          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
+          sx={{ mt: matchSM ? '1em' : '5em' }}
         >
-          <Grid item textAlign={matchSM ? 'center' : undefined}>
+          <Grid
+            item
+            textAlign={matchSM ? 'center' : undefined}
+            width={matchSM ? undefined : '35em'}
+          >
             <Typography variant='h4'>iOS/Android Development</Typography>
-            <Typography variant='subtitle1'>
+            <ServiceSubtitle variant='subtitle1'>
               Extend Functionality. Extend Access. Increase Engagment.
-            </Typography>
+            </ServiceSubtitle>
             <Typography variant='subtitle1'>
               Integrate your web experience or create a standalone app{' '}
               {matchSM ? null : <br />} with either mobile platform.
@@ -68,26 +92,22 @@ const Services = ({ setValue, setSelectedIndex, ...props }) => {
             </LearnMoreBtn>
           </Grid>
           <Grid item marginRight={matchSM ? '0' : '5em'}>
-            <ServiceIcon alt='mobile phone icon' src={mobileIcon} />
+            <ServiceIcon alt='mobile phone icon' src={mobileIcon} width='250em' />
           </Grid>
-        </Grid>
+        </ServiceContainer>
       </Grid>
       <Grid item>
         {/*----- Custom Software Block -----*/}
-        <Grid
-          container
-          justifyContent={matchSM ? 'center' : undefined}
-          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
-        >
+        <ServiceContainer container justifyContent={matchSM ? 'center' : undefined}>
           <Grid
             item
             marginLeft={matchSM ? '0' : '5em'}
             textAlign={matchSM ? 'center' : undefined}
           >
             <Typography variant='h4'>Custom Software Development</Typography>
-            <Typography variant='subtitle1'>
+            <ServiceSubtitle variant='subtitle1'>
               Save Energy. Save Time. Save Money.
-            </Typography>
+            </ServiceSubtitle>
             <Typography variant='subtitle1'>
               Complete digital solutions, from investigation to{' '}
               <Box
@@ -118,20 +138,24 @@ const Services = ({ setValue, setSelectedIndex, ...props }) => {
           <Grid item>
             <ServiceIcon alt='custom software icon' src={customSoftwareIcon} />
           </Grid>
-        </Grid>
+        </ServiceContainer>
       </Grid>
       <Grid item>
         {/*----- Websites Block -----*/}
-        <Grid
+        <ServiceContainer
           container
           justifyContent={matchSM ? 'center' : 'flex-end'}
-          sx={{ marginTop: '12em', padding: { xs: '5px', sm: '25px', md: 'unset' } }}
+          sx={{ mb: '10em' }}
         >
-          <Grid item textAlign={matchSM ? 'center' : undefined}>
+          <Grid
+            item
+            textAlign={matchSM ? 'center' : undefined}
+            width={matchSM ? undefined : '35em'}
+          >
             <Typography variant='h4'>Website Development</Typography>
-            <Typography variant='subtitle1'>
+            <ServiceSubtitle variant='subtitle1'>
               Reach More. Discover More. Sell More.
-            </Typography>
+            </ServiceSubtitle>
             <Typography variant='subtitle1'>
               Optimized for Search Engines, built for speed.
             </Typography>
@@ -151,9 +175,9 @@ const Services = ({ setValue, setSelectedIndex, ...props }) => {
             </LearnMoreBtn>
           </Grid>
           <Grid item mr={matchSM ? 0 : '5em'}>
-            <ServiceIcon alt='website icon' src={websitesIcon} />
+            <ServiceIcon alt='website icon' src={websitesIcon} width='250em' />
           </Grid>
-        </Grid>
+        </ServiceContainer>
       </Grid>
     </Grid>
   );
