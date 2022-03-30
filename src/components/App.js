@@ -7,6 +7,7 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import LandingPage from './LandingPage';
 import Services from './Services';
+import CustomSoftware from './CustomSoftware';
 
 const App = () => {
   const [value, setValue] = useState(0);
@@ -32,7 +33,12 @@ const App = () => {
             path='/services'
             element={<Services setValue={setValue} setSelectedIndex={setSelectedIndex} />}
           />
-          <Route path='/customsoftware' element={<CustomSoftware />} />
+          <Route
+            path='/customsoftware'
+            element={
+              <CustomSoftware setValue={setValue} setSelectedIndex={setSelectedIndex} />
+            }
+          />
           <Route path='/mobileapps' element={<MobileApps />} />
           <Route path='/websites' element={<Websites />} />
           <Route path='/revolution' element={<TheRevolution />} />
@@ -49,10 +55,6 @@ const App = () => {
 // const Home = () => {
 //   return <div style={{ height: '2000px' }}>Home</div>;
 // };
-
-const CustomSoftware = () => {
-  return <div>Custom Software</div>;
-};
 
 const MobileApps = () => {
   return <div>Mobile Apps</div>;
