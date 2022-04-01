@@ -224,6 +224,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex, ...props }) 
             to={option.link}
             sx={theme => ({
               ...theme.typography.tab,
+              color: '#FFFFFF',
               opacity: 0.7,
               '&:hover': {
                 opacity: 0.9,

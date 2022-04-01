@@ -9,19 +9,36 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import backArrow from '../assets/backArrow.svg';
 import forwardArrow from '../assets/forwardArrow.svg';
+import lightbulb from '../assets/bulb.svg';
+import cash from '../assets/cash.svg';
+import stopwatch from '../assets/stopwatch.svg';
 
-// const BackArrowImage = styled('img')({});
+const ArrowContainer = styled(Grid)({ marginTop: '0.5em' });
 
-const CustomSoftware = () => {
+const CustomSoftware = ({ setSelectedIndex }) => {
   return (
-    <Grid container direction='column'>
+    <Grid
+      container
+      direction='column'
+      sx={{
+        paddingLeft: '5em',
+        paddingRight: '5em',
+        paddingTop: '2em',
+        paddingBottom: '10em',
+      }}
+    >
       <Grid container item direction='row'>
-        <Grid item>
-          <IconButton>
+        <ArrowContainer item sx={{ marginRight: '1em', marginLeft: '-3.5em' }}>
+          <IconButton
+            component={Link}
+            to='/services'
+            sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+            onClick={() => setSelectedIndex(0)}
+          >
             <Box component='img' src={backArrow} alt='back to service page' />
           </IconButton>
-        </Grid>
-        <Grid container item direction='column'>
+        </ArrowContainer>
+        <Grid container item direction='column' sx={{ maxWidth: '40em' }}>
           <Grid item>
             <Typography variant='h2'>Custom Software Development</Typography>
           </Grid>
@@ -47,14 +64,66 @@ const CustomSoftware = () => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid item>
-          <IconButton>
+        <ArrowContainer item>
+          <IconButton
+            component={Link}
+            to='/mobileapps'
+            sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+            onClick={() => setSelectedIndex(2)}
+          >
             <Box
               component='img'
               src={forwardArrow}
               alt='forward to iOS/Android App Development page'
             />
           </IconButton>
+        </ArrowContainer>
+      </Grid>
+      <Grid container item direction='row' justifyContent='center' mt='15em' mb='20em'>
+        <Grid
+          container
+          item
+          md
+          direction='column'
+          alignItems='center'
+          sx={{ maxWidth: '40em' }}
+        >
+          <Grid item>
+            <Typography variant='h4'>Save Energy</Typography>
+          </Grid>
+          <Grid item>
+            <Box component='img' src={lightbulb} alt='lightbulb' />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          md
+          direction='column'
+          alignItems='center'
+          sx={{ maxWidth: '40em' }}
+        >
+          <Grid item>
+            <Typography variant='h4'>Save Time</Typography>
+          </Grid>
+          <Grid item>
+            <Box component='img' src={stopwatch} alt='stopwatch' />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          item
+          md
+          direction='column'
+          alignItems='center'
+          sx={{ maxWidth: '40em' }}
+        >
+          <Grid item>
+            <Typography variant='h4'>Save Money</Typography>
+          </Grid>
+          <Grid item>
+            <Box component='img' src={cash} alt='cash' />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
