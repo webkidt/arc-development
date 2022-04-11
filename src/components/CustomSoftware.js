@@ -12,10 +12,38 @@ import forwardArrow from '../assets/forwardArrow.svg';
 import lightbulb from '../assets/bulb.svg';
 import cash from '../assets/cash.svg';
 import stopwatch from '../assets/stopwatch.svg';
+import documentsAnimation from '../animations/documentsAnimation/data';
+import scaleAnimation from '../animations/scaleAnimation/data.json';
 
 const ArrowContainer = styled(Grid)({ marginTop: '0.5em' });
 
+const ItemContainer = styled(Grid)({ maxWidth: '40em' });
+
+// const LottieDocumentAnimation = styled(Lottie)({
+//   maxHeight: 325,
+//   maxWidth: 275,
+//   minHeight: 275,
+// });
+
 const CustomSoftware = ({ setSelectedIndex }) => {
+  const documentsOptions = {
+    loop: true,
+    autoplay: false,
+    animationData: documentsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
+  const scaleOptions = {
+    loop: true,
+    autoplay: false,
+    animationData: scaleAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <Grid
       container
@@ -125,6 +153,59 @@ const CustomSoftware = ({ setSelectedIndex }) => {
             <Box component='img' src={cash} alt='cash' />
           </Grid>
         </Grid>
+      </Grid>
+      <Grid container item direction='row' justifyContent='space-between'>
+        <ItemContainer container item md>
+          <Grid container item md direction='column'>
+            <Grid item>
+              <Typography variant='h4'>Digital Documents & Data</Typography>
+            </Grid>
+            <Grid item>
+              <Typography paragraph variant='body1'>
+                Reduce Errors. Reduce Waste. Reduce Costs.
+              </Typography>
+              <Typography paragraph variant='body1'>
+                Billions are spent annually on the purchasing, printing, and distribution
+                of paper. On top of the massive environmental impact this has, it causes
+                harm to your bottom line as well.
+              </Typography>
+              <Typography paragraph variant='body1'>
+                By utilizing digital forms and documents you can remove these obsolete
+                expenses, accelerate your communication, and help the Earth.
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item md>
+            <Lottie
+              options={documentsOptions}
+              isStopped={true}
+              style={{ maxHeight: 275, maxWidth: 275, minHeight: 250 }}
+            />
+          </Grid>
+        </ItemContainer>
+        <ItemContainer container item md>
+          <Grid item md>
+            <Lottie
+              options={scaleOptions}
+              isStopped={true}
+              style={{ maxHeight: 260, maxWidth: 280 }}
+            />
+          </Grid>
+          <Grid container item md direction='column'>
+            <Grid item>
+              <Typography variant='h4' align='right'>
+                Scale
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography paragraph variant='body1' align='right'>
+                Whether you’re a large brand, just getting started, or taking off right
+                now, our application architecture ensures pain-free growth and
+                reliability.
+              </Typography>
+            </Grid>
+          </Grid>
+        </ItemContainer>
       </Grid>
     </Grid>
   );
