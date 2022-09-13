@@ -30,6 +30,10 @@ const ItemContainer = styled(Grid)({ maxWidth: '40em' });
 // });
 
 const CustomSoftware = ({ setSelectedIndex }) => {
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('lg'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('md'));
+
   const documentsOptions = {
     loop: true,
     autoplay: false,
@@ -77,8 +81,20 @@ const CustomSoftware = ({ setSelectedIndex }) => {
         paddingBottom: '10em',
       }}
     >
-      <Grid container item direction='row'>
-        <ArrowContainer item sx={{ marginRight: '1em', marginLeft: '-3.5em' }}>
+      <Grid
+        container
+        item
+        direction='row'
+        justifyContent={matchesMD ? 'center' : undefined}
+      >
+        <ArrowContainer
+          item
+          sx={{
+            marginRight: '1em',
+            marginLeft: '-3.5em',
+            display: { xs: 'none', lg: 'block' },
+          }}
+        >
           <IconButton
             component={Link}
             to='/services'
@@ -90,31 +106,49 @@ const CustomSoftware = ({ setSelectedIndex }) => {
         </ArrowContainer>
         <Grid container item direction='column' sx={{ maxWidth: '40em' }}>
           <Grid item>
-            <Typography variant='h2'>Custom Software Development</Typography>
+            <Typography variant='h2' align={matchesMD ? 'center' : undefined}>
+              Custom Software Development
+            </Typography>
           </Grid>
           <Grid item>
-            <Typography paragraph variant='body1'>
+            <Typography
+              paragraph
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+            >
               Whether we’re replacing old software or inventing new solutions, Arc
               Development is here to help your business tackle technology.
             </Typography>
-            <Typography paragraph variant='body1'>
+            <Typography
+              paragraph
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+            >
               Using regular commercial software leaves you with a lot of stuff you don’t
               need, without some of the stuff you do need, and ultimately controls the way
               you work. Without using any software at all you risk falling behind
               competitors and missing out on huge savings from increased efficiency.
             </Typography>
-            <Typography paragraph variant='body1'>
+            <Typography
+              paragraph
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+            >
               Our custom solutions are designed from the ground up with your needs, wants,
               and goals at the core. This collaborative process produces finely tuned
               software that is much more effective at improving your workflow and reducing
               costs than generalized options.
             </Typography>
-            <Typography paragraph variant='body1'>
+            <Typography
+              paragraph
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+            >
               We create exactly what you what, exactly how you want it.
             </Typography>
           </Grid>
         </Grid>
-        <ArrowContainer item>
+        <ArrowContainer item sx={{ display: { xs: 'none', lg: 'block' } }}>
           <IconButton
             component={Link}
             to='/mobileapps'
@@ -151,7 +185,11 @@ const CustomSoftware = ({ setSelectedIndex }) => {
           md
           direction='column'
           alignItems='center'
-          sx={{ maxWidth: '40em' }}
+          sx={{
+            maxWidth: '40em',
+            marginTop: matchesSM ? '10em' : 0,
+            marginBottom: matchesSM ? '10em' : 0,
+          }}
         >
           <Grid item>
             <Typography variant='h4'>Save Time</Typography>
@@ -176,8 +214,14 @@ const CustomSoftware = ({ setSelectedIndex }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container item direction='row' justifyContent='space-between'>
-        <ItemContainer container item md>
+      <Grid
+        container
+        item
+        direction={matchesMD ? 'column' : 'row'}
+        alignItems={matchesMD ? 'center' : undefined}
+        justifyContent='space-between'
+      >
+        <ItemContainer container item md sx={{ marginBottom: matchesMD ? '15em' : 0 }}>
           <Grid container item md direction='column'>
             <Grid item>
               <Typography variant='h4'>Digital Documents & Data</Typography>
@@ -253,8 +297,15 @@ const CustomSoftware = ({ setSelectedIndex }) => {
           </ItemContainer>
         </Grid>
       </Grid>
-      <Grid container item direction='row' justifyContent='space-between'>
-        <ItemContainer container item md>
+      <Grid
+        container
+        item
+        direction={matchesMD ? 'column' : 'row'}
+        alignItems={matchesMD ? 'center' : undefined}
+        justifyContent='space-between'
+        sx={{ marginBottom: '20em' }}
+      >
+        <ItemContainer container item md sx={{ marginBottom: matchesMD ? '15em' : 0 }}>
           <Grid container item md direction='column'>
             <Grid item>
               <Typography variant='h4'>Automation</Typography>
